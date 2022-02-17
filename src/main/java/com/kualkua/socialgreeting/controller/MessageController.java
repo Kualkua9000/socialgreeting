@@ -46,12 +46,12 @@ public class MessageController {
 
     @PutMapping("{id}")
     public Map<String, String> update(@PathVariable String  id, @RequestBody Map<String, String> message) {
-        Map<String, String> messageFromDb = getMessage(message.get("id"));
+        Map<String, String> messageFromDb = getMessage(id);
         messageFromDb.put("id", id);
         return messageFromDb;
     }
 
-    @DeleteMapping("id")
+    @DeleteMapping("{id}")
     public void delete(@PathVariable String id) {
         Map<String, String> message = getMessage(id);
         messages.remove(message);
